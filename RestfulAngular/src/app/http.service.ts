@@ -15,8 +15,12 @@ export class HttpService {
   	return this._http.get('/task/'+id);
   }
   removeTask(id){
-  	// let tempObs = this._http.get('/task/remove/'+id);
-  	// tempObs.subscribe(data => console.log("Removed the task!"))
+  	return this._http.get('/task/remove/'+id);
   }
-
+  addTask(newtask){
+    return this._http.post('/task/new', newtask)
+  }
+  editTask(id, editTask){
+    return this._http.post('/task/update/'+id, editTask)
+  }
 }

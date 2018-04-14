@@ -59,13 +59,22 @@ app.get('/task/remove/:id', function(req, res){
     }
   })
 })
-app.get('/task/update/:id/:newtitle', function(req, res){
-  Task.update({_id: req.params.id}, {title: req.params.newtitle}, function(err){
+app.post('/task/update/:id/', function(req, res){
+  Task.findOne({_id: req.params.id}, function(err, task){
     if(err){
       res.json({message: "Error", error: err})
     }
     else {
-      res.json({message: "Success in updating new task"})
+      task.title = req.body.title
+      task.description = req.body.description
+      task.save(function(err) {
+        if(err) {
+          res.json({message: "Error", error: err})
+        } 
+        else { // else console.log that we did well and then redirect to the root route
+          res.json({message: "Success in updating task", data: task})
+        }
+      })
     }
   })
 })
