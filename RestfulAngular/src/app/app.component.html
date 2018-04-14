@@ -1,0 +1,15 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Restful Tasks API
+  </h1>
+  <h2 id='alltasks'>All the tasks:</h2>
+  <button (click)='getTasksFromService()'>Click to get all tasks</button>
+  <li *ngFor = "let task of tasks">{{task.title}}</li>
+  <h2>Enter Task ID:</h2>
+  <input #taskInput placeholder="Enter task id here" type='text'>
+  <button (click)="getTask(taskInput.value)">Submit</button>
+  <p>{{task.title}}</p>
+</div>
+  
+
