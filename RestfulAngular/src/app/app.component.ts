@@ -10,7 +10,7 @@ import { HttpService } from './http.service';
 export class AppComponent implements OnInit{
   	title = 'Tasks';
   	tasks = [];
-  	task = {}
+  	task: any;
     newTask: any;
     editTask: any;
     edit = false
@@ -18,6 +18,7 @@ export class AppComponent implements OnInit{
     constructor(private _httpService: HttpService){}
     ngOnInit(){
       this.newTask = {title: "", description: ""}
+      this.editTask = {title: "", description: ""}
       this.getTasksFromService()
     }
     getTasksFromService(){
